@@ -51,3 +51,9 @@
 
 - The reason why it failed is because the "pepperoni" and "knife" is not exactly the same as the one from the list we explore. The explaore list shows that it is "Pepperoni" and "Knife". The part that is not the same is the capital letters. Since computer compare 'P' and 'p' or "K" and "k" as different, it did not find the exact matched word to exclude (it probably random the pizzas), therefore the result did not exclude as we want making it failed.
 - Manual request might not have found the bug since there is a higher chance that manual might get the correct pizza than the wrong one. However if we check under load then we have many sample to look at and we can see the sample that gets the wrong pizza. Manual might be lucky, but if we do it many times then the bugs is more easy to be seen with that many samples. 
+
+## Step A1
+- passed home page is 200
+- passed quotes are listed
+- passed recommendation is 200
+- passed pizza has a name
