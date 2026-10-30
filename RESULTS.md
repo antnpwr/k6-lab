@@ -74,12 +74,20 @@
 - A5 soak: No, in my case it does not worsen for both the response time and the error rate. It is still in the same range of around 320-420 all throughout the whole time.
 
 ## Part B
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
+1. Done, see the table above.
+
+2. The rate stays below 5 requests per second because we see in the execution output that one iteration takes about 1.35s (about 0.3 for req, 1 for sleep), so 1 vus makes 1/1.35 req/s, and 5 vus makes 5*0.74 = 3.7 req/s. So it is impossible to reach 5 req/s when each iteration is more than 1 second.
+
+3. No, not much. It did grow a little bit but not much. P(95) went from 554.88 ms (A2) to 614.84 ms (A3). This is because QuickPizza is build to be able to handle a lot more users, so it still workes well inside the operational envelope. Adding just a few more users didn't really affect much, it is still far inside the envelope, we didn't see where it might be slow.
+
+4. It takes around 10 seconds in A4 to return back to normal after the spike.
+
+5. No, in my case it does not worsen for both the response time and the error rate. It is still in the same range of around 320-420 all throughout the whole time. 10 minutes prabably cannot show bug compare to a real soak test that last an hour, so a real one could show some problem like memory leak and being slow.
+
+6. P(95) means 95th percentile of response time, so 95% of req are as fast as or faster than the number. And the average may not be accurate due to some extreme number and makes it not so real. 
+
+7. First is because there could be noises or internet issues that can occur randomly and messed up with the output (i have that multiple times but i rerun them). Second is probably the amount of public users using it at the same time, while in the lab there may be a limit amount of users where the result from the test could be more consistent.
+
+8. Because it might overload the site, as it is a public site, there will be other people that use it and testing with hundreds of users will affect other people trying to use the site at the same time. And it might also affect the owner of the site for having to handle the crash too.
+
+9. Vague example: message in Line should send quickly. Testable requirement: with 100 users sending messages at the same time for 10 minutes, the send-message API answers 95% of requests within 500 ms and 99% within 1 second, and fewer than 1% of requests fail.
