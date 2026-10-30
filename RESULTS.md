@@ -7,7 +7,7 @@
 
 ### Step 0.2
 - 75 requests at 3.7 req/s with a p(95) of 336.5 ms
-- The rate stays below 5 requests per second because we see in the execution output that one iteration takes about 1.35s, so 1 vus makes 1/1.35 req/s, and 5 vus makes 5*0.74 = 3.7 req/s. So it is impossible to reach 5 req/s when each iteration is more than 1 second.
+- The rate stays below 5 requests per second because we see in the execution output that one iteration takes about 1.35s (about 0.3 for req, 1 for sleep), so 1 vus makes 1/1.35 req/s, and 5 vus makes 5*0.74 = 3.7 req/s. So it is impossible to reach 5 req/s when each iteration is more than 1 second.
 
 ### Step 0.3
 - 20 requests at 3.3 req/s with a p(95) of 296.5ms
@@ -56,7 +56,7 @@
 - passed no pepperoni
 - passed no knife needed
 
-- The reason why it failed is because the "pepperoni" and "knife" is not exactly the same as the one from the list we explore. The explaore list shows that it is "Pepperoni" and "Knife". The part that is not the same is the capital letters. Since computer compare 'P' and 'p' or "K" and "k" as different, it did not find the exact matched word to exclude (it probably random the pizzas), therefore the result did not exclude as we want making it failed.
+- The reason why it failed is because the "pepperoni" and "knife" is not exactly the same as the one from the list we explore. The explore list shows that it is "Pepperoni" and "Knife". The part that is not the same is the capital letters. Since computer compare 'P' and 'p' or "K" and "k" as different, it did not find the exact matched word to exclude (it probably random the pizzas), therefore the result did not exclude as we want making it failed.
 - Manual request might not have found the bug since there is a higher chance that manual might get the correct pizza than the wrong one. However if we check under load then we have many sample to look at and we can see the sample that gets the wrong pizza. Manual might be lucky, but if we do it many times then the bugs is more easy to be seen with that many samples. 
 
 
@@ -66,11 +66,12 @@
 | A1   | Smoke        | 1     | 0.48  | 665.72 ms | 713.84 ms | 0.00%  | 100.00% |
 | A2   | Average load | 3     | 1.28  | 554.88 ms | 648.11 ms | 0.00%  | 100.00% |
 | A3   | Stress       | 5     | 1.95  | 614.84 ms | 7.75 s    | 0.00%  | 100.00% |
-| A4   | Spike        | 5     | 1.02  | 396.89 ms | 922.85 ms |  0.00% | 100.00% |
-| A5   | Soak         | 2     |       |           |           |        |         |
+| A4   | Spike        | 5     | 1.02  | 396.89 ms | 922.85 ms | 0.00%  | 100.00% |
+| A5   | Soak         | 2     | 0.97  | 389.88 ms | 464.29 ms | 0.00%  | 100.00% |
 
 - Comparing p(95) of A2 with A3: I actually run A3 twice, the first time it failed 2 thresholds with exit code 99, but the second/rerun passed all thresholds (it may be my network connection). But from the table, we can see that the p(95) is a little higher in A3 compared to A2
 - A4 spike: The spike happen around 21:04:09 to 21:04:59. During the spike, the response time rise to the highest at around 21:04:49 but then quickly drop back to normal in 10s, right where the user drop to 1.
+- A5 soak: No, in my case it does not worsen for both the response time and the error rate. It is still in the same range of around 320-420 all throughout the whole time.
 
 ## Part B
 1.
