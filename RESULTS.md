@@ -23,9 +23,18 @@
     - http_req_failed = passed 'rate<0.01' rate=0.00%
     - exit code = 99
 
-## Step 0.7
+## Step 0.7 before
 - http_req_duration 
     - passed 'p(95)<1000' p(95)=589.46ms
     - passed 'p(99)<1500' p(99)=831.49ms
 - http_req_failed
     - passed 'rate<0.01' rate=0.00%
+- exit code = 0
+
+## Step 0.7 after
+- http_req_duration
+    - failed 'p(95)<300' p(95)=582.21ms
+    - passed 'p(99)<1500' p(99)=626.59ms
+- http_req_failed
+    - passed 'rate<0.01' rate=0.00%
+- exit code = 99
