@@ -38,3 +38,8 @@
 - http_req_failed
     - passed 'rate<0.01' rate=0.00%
 - exit code = 99
+
+## Step 0.8 before fix
+- passed status is 200
+- failed no pepperoni -> 85% — ✓ 61 / ✗ 10
+- failed no knife needed -> 64% — ✓ 46 / ✗ 25
