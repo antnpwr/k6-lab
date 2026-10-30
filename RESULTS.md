@@ -4,3 +4,9 @@
 
 # Step 0.3
 - 20 requests at 3.3 req/s with a p(95) of 296.5ms
+
+# Step 0.4
+- 3 requests at 1.1 req/s with a p(95) of 405.2ms
+
+# Step 0.5
+- 1 requests at 0.4 req/s with a p(95) of 289.8ms
