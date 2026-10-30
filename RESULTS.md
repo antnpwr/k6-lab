@@ -66,10 +66,11 @@
 | A1   | Smoke        | 1     | 0.48  | 665.72 ms | 713.84 ms | 0.00%  | 100.00% |
 | A2   | Average load | 3     | 1.28  | 554.88 ms | 648.11 ms | 0.00%  | 100.00% |
 | A3   | Stress       | 5     | 1.95  | 614.84 ms | 7.75 s    | 0.00%  | 100.00% |
-| A4   | Spike        | 5     |       |           |           |        |         |
+| A4   | Spike        | 5     | 1.02  | 396.89 ms | 922.85 ms |  0.00% | 100.00% |
 | A5   | Soak         | 2     |       |           |           |        |         |
 
 - Comparing p(95) of A2 with A3: I actually run A3 twice, the first time it failed 2 thresholds with exit code 99, but the second/rerun passed all thresholds (it may be my network connection). But from the table, we can see that the p(95) is a little higher in A3 compared to A2
+- A4 spike: The spike happen around 21:04:09 to 21:04:59. During the spike, the response time rise to the highest at around 21:04:49 but then quickly drop back to normal in 10s, right where the user drop to 1.
 
 ## Part B
 1.
